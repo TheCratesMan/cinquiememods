@@ -1,0 +1,26 @@
+import java.util.List;
+
+public class ItemTNTTrigger extends yr
+{
+
+    public ItemTNTTrigger(int i)
+    {
+        super(i);
+        bR = 1;
+    }
+
+    public aan a(aan itemstack, xd world, yw entityplayer)
+    {
+        List stickytnt = world.b;
+        for(int i = 0; i < stickytnt.size(); i++)
+        {
+            if(stickytnt.get(i) instanceof EntityStickyTNT)
+            {
+                ((EntityStickyTNT)stickytnt.get(i)).explode();
+            }
+        }
+
+        return itemstack;
+    }
+}
+

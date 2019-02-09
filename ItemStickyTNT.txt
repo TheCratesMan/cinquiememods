@@ -1,0 +1,26 @@
+import java.util.Random;
+
+public class ItemStickyTNT extends yr
+{
+
+    public ItemStickyTNT(int i)
+    {
+        super(i);
+        bR = 16;
+    }
+
+    public aan a(aan itemstack, xd world, yw entityplayer)
+    {
+        if(!entityplayer.aT.d)
+        {
+            itemstack.a--;
+        }
+        world.a(entityplayer, "random.bow", 0.5F, 0.4F / (d.nextFloat() * 0.4F + 0.8F));
+        if(!world.F)
+        {
+            world.a(new EntityStickyTNT(world, entityplayer));
+        }
+        return itemstack;
+    }
+}
+

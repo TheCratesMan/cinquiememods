@@ -1,0 +1,111 @@
+import net.minecraft.client.Minecraft;
+
+public class EntityStickyTNT extends av
+{
+
+    public boolean isPlaced;
+    private double previPosX;
+    private double previPosY;
+    private double previPosZ;
+    public nn onEntity;
+
+    public EntityStickyTNT(xd world)
+    {
+        super(world);
+        isPlaced = false;
+        previPosX = 0.0D;
+        previPosY = 0.0D;
+        previPosZ = 0.0D;
+        onEntity = null;
+    }
+
+    public EntityStickyTNT(xd world, acq entityliving)
+    {
+        super(world, entityliving);
+        isPlaced = false;
+        previPosX = 0.0D;
+        previPosY = 0.0D;
+        previPosZ = 0.0D;
+        onEntity = null;
+    }
+
+    public EntityStickyTNT(xd world, double d, double d1, double d2)
+    {
+        super(world, d, d1, d2);
+        isPlaced = false;
+        previPosX = 0.0D;
+        previPosY = 0.0D;
+        previPosZ = 0.0D;
+        onEntity = null;
+    }
+
+    public void J_()
+    {
+        if(!isPlaced)
+        {
+            super.J_();
+        } else
+        if(onEntity != null)
+        {
+            double add = (onEntity.y.e - onEntity.y.b) + 0.5D;
+            if(onEntity instanceof aja)
+            {
+                add -= 0.69999999999999996D;
+            }
+            if(onEntity instanceof yd)
+            {
+                add -= 0.29999999999999999D;
+            }
+            if(onEntity instanceof cb)
+            {
+                add -= 0.5D;
+            }
+            d(onEntity.o, onEntity.p + add, onEntity.q);
+        }
+    }
+
+    public void explode()
+    {
+        float f = 4F;
+        k.a(null, o, p, q, f);
+        A();
+    }
+
+    public wu f_()
+    {
+        return y;
+    }
+
+    public boolean l_()
+    {
+        return true;
+    }
+
+    public boolean a(md damagesource, int i)
+    {
+        E();
+        if((damagesource instanceof fl) && ((fl)damagesource).a == ModLoader.getMinecraftInstance().h)
+        {
+            k.a(new fq(k, o, p, q, new aan(mod_StickyTNT.stickyTNT)));
+        }
+        return true;
+    }
+
+    protected void a(pl movingobjectposition)
+    {
+        if(movingobjectposition.g instanceof EntityStickyTNT)
+        {
+            return;
+        }
+        if(movingobjectposition.g != null)
+        {
+            onEntity = movingobjectposition.g;
+        } else
+        {
+            r = 0.0D;
+            s = 0.0D;
+            t = 0.0D;
+        }
+        isPlaced = true;
+    }
+}

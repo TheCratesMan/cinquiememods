@@ -1,0 +1,45 @@
+import java.util.Map;
+
+public class mod_StickyTNT extends BaseMod
+{
+
+    public static final int stickyTNTGraphic;
+    public static final int tntTriggerGraphic;
+    public static final yr stickyTNT;
+    public static final yr tntTrigger;
+
+    public mod_StickyTNT()
+    {
+        ModLoader.registerEntityID(EntityStickyTNT, "EntityStickyTNT", 2345);
+        ModLoader.addName(stickyTNT, "Sticky TNT");
+        ModLoader.addName(tntTrigger, "TNT Trigger");
+        ModLoader.addRecipe(new aan(tntTrigger, 1), new Object[] {
+            "A", "B", "C", Character.valueOf('A'), pb.aQ, Character.valueOf('B'), pb.aR, Character.valueOf('C'), yr.o
+        });
+        ModLoader.addShapelessRecipe(new aan(stickyTNT, 2), new Object[] {
+            yr.aC, pb.am, yr.aM
+        });
+    }
+
+    public void addRenderer(Map map)
+    {
+        map.put(EntityStickyTNT, new RenderStickyTNT());
+    }
+
+    public void load()
+    {
+    }
+
+    public String getVersion()
+    {
+        return "1.1";
+    }
+
+    static 
+    {
+        stickyTNTGraphic = ModLoader.addOverride("/gui/items.png", "/stickyTNT.png");
+        tntTriggerGraphic = ModLoader.addOverride("/gui/items.png", "/tntTrigger.png");
+        stickyTNT = (new ItemStickyTNT(2345)).a("stickyTNT").e(stickyTNTGraphic);
+        tntTrigger = (new ItemTNTTrigger(2346)).a("TNTTrigger").e(tntTriggerGraphic);
+    }
+}
